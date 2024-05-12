@@ -63,39 +63,28 @@ Borrow out = A'Bin + A'B + BBin
 Developed by: Harrish Venkat V
 RegisterNumber: 212223240049
 */
-## Full_adder
 ```
-module fulladd_top(a,b,cin,sum,carry);
-input a,b,cin;
-output sum,carry;
-wire w1,w2,w3,w4;       
-xor(w1,a,b);
-xor(sum,w1,cin);        
-and(w2,a,b);
-and(w3,b,cin);
-and(w4,cin,a);
-or(carry,w2,w3,w4);
+module FULLADDERSUB(a,b,c,sum,carry,D,BO);
+input a,b,c;
+output sum,carry,D,BO;
+assign sum=a^b^c;
+assign carry=(a&b)|(b&c)|(a&c);
+assign D=a^b^c;
+assign BO=(~a&b)|(b&c)|(~a&c);
 endmodule
+```
 
-## Full_subtractor
-module fullsub_top(a,b,Bin,BO,DIFF);
-input a,b,Bin;
-output BO,DIFF;
-assign DIFF = a ^ b ^ Bin;
-  assign BO = (a & b) | ((a ^ b) & Bin);
-endmodule
-```
 **RTL Schematic**
-![image](https://github.com/HarrishVenkat/FULL_ADDER_SUBTRACTOR/assets/144979588/69a95518-9c12-436c-a17b-fab1244e12c1)
+![image](https://github.com/HarrishVenkat/FULL_ADDER_SUBTRACTOR/assets/144979588/6fb0a11a-bfdb-481c-b5e9-fb875f3fda3d)
 
 **Output Timing Waveform**
 ## Full_adder
 
-![image](https://github.com/HarrishVenkat/FULL_ADDER_SUBTRACTOR/assets/144979588/98202547-9ad0-4ef8-be27-06979f3993a6)
+![image](https://github.com/HarrishVenkat/FULL_ADDER_SUBTRACTOR/assets/144979588/ed090da8-7d33-4f76-ab63-2b927df28e15)
 ## Full_subtractor
 
 
-![image](https://github.com/HarrishVenkat/FULL_ADDER_SUBTRACTOR/assets/144979588/b2275adf-1eab-459e-85b8-47878b14f87b)
+![image](https://github.com/HarrishVenkat/FULL_ADDER_SUBTRACTOR/assets/144979588/e9c6cee9-ea48-46d9-b33d-72e3414ad75d)
 
 **Result:**
 Thus the Full Adder and Full Subtractor circuits are designed and the truth tables is verified using Quartus software.
